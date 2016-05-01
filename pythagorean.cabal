@@ -17,8 +17,9 @@ library
   hs-source-dirs:      src
   exposed-modules:     Lib
                      , Tables
-  build-depends:       base >= 4.7 && < 5
-                     , QuickCheck >= 2.8.1
+  build-depends:       QuickCheck >= 2.8.1
+                     , base >= 4.7 && < 5
+                     , containers >= 0.5.6.2
   ghc-options:         -Wall -fno-warn-type-defaults
   default-language:    Haskell2010
 
@@ -27,6 +28,7 @@ executable pythagorean-exe
   main-is:             Main.hs
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N  -fno-warn-type-defaults
   build-depends:       base
+                     , containers >= 0.5.6.2
                      , pythagorean
   default-language:    Haskell2010
 
@@ -34,10 +36,11 @@ test-suite pythagorean-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
-  build-depends:       base
-                     , pythagorean
-                     , QuickCheck >= 2.8.1
+  build-depends:       QuickCheck >= 2.8.1
+                     , base
+                     , containers >= 0.5.6.2
                      , hspec >= 2.2.3
+                     , pythagorean
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N  -fno-warn-type-defaults
   default-language:    Haskell2010
 

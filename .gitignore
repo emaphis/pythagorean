@@ -65,3 +65,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Emacs stuff
+TAGS
