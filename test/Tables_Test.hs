@@ -7,7 +7,8 @@ import Test.HUnit
 import Data.Char (toUpper)
 
 
-someCases = TestList [testGetNum, testGetNumLower]
+getNumCases :: Test
+getNumCases = TestList [testGetNum, testGetNumLower]
 
 testGetNum, testGetNumLower :: Test
 
@@ -31,5 +32,4 @@ testGetNumLower = TestCase $ do
 
 
 main :: IO Counts
-main = runTestTT $ TestList [someCases]
-
+main = runTestTT $ TestList [getNumCases]
