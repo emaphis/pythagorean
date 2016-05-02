@@ -22,6 +22,7 @@ library
                      , QuickCheck >= 2.8.1
                      , base >= 4.7 && < 5
                      , containers >= 0.5.6.2
+                     , split >= 0.2.3
   ghc-options:         -Wall -fno-warn-type-defaults
   default-language:    Haskell2010
 
@@ -33,6 +34,7 @@ executable pythagorean-exe
                      , base
                      , containers >= 0.5.6.2
                      , pythagorean
+                     , split >= 0.2.3
   default-language:    Haskell2010
 
 test-suite pythagorean-test
@@ -45,6 +47,7 @@ test-suite pythagorean-test
                      , containers >= 0.5.6.2
                      , hspec >= 2.2.3
                      , pythagorean
+                     , split >= 0.2.3
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N  -fno-warn-type-defaults
   default-language:    Haskell2010
 

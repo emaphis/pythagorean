@@ -5,6 +5,7 @@ module Calcs where
 
 import Tables
 import Data.Char (toUpper)
+import Data.List.Split (splitOn)
 
 
 -- calc gematria as a List of Int given a word and a GeMap
@@ -81,3 +82,33 @@ calcPythag = map (\s -> (s, sumPY s, sumPS s, sumPX s))
 -- calculate the Bacon Gematria of a list of words
 calcBacon :: [String] -> [(String, Int)]
 calcBacon = map (\s -> (s, sumBC s))
+
+
+-- Convenience funtions that take a String of text, chop it
+-- up into words then calculate the gematria.
+-- String -> Tuples
+
+-- find the Simple English, Pythagorean, Jewish gematria of a given text
+findGem :: String -> [(String, Int, Int, Int)]
+findGem txt = calcGematria (getWords txt)
+
+-- > findGem "lets go on a balloon ride"
+--   [("lets",56,11,215),("go",22,13,57),("on",29,11,90),("a",1,1,1),("balloon",71,26,183),("ride",36,27,98)]
+
+
+-- find the Simple and Exceptional Pythogorean gematria of a given text
+findPythag :: String -> [(String, Int, Int, Int)]
+findPythag txt = calcPythag (getWords txt)
+
+
+-- given a String of text find the Bacon gematria
+findBacon :: String -> [(String, Int)]
+findBacon txt = calcBacon (getWords txt)
+
+
+-- divide text into a list of words
+getWords :: String -> [String]
+getWords txt = splitOn " " txt
+
+-- getWords "lets go on a balloon ride"
+-- ["lets","go","on","a","balloon","ride"]

@@ -69,8 +69,36 @@ test_calcPythag = TestCase $ do
     [("Im",13,13,13),("king",23,23,32),("of",12,12,12),("all",7,7,7),("I",9,9,9),("survey",29,38,56)]
     (calcPythag ["Im","king", "of", "all", "I", "survey"])
 
+test_findGem :: Test
+test_findGem = TestCase $ do
+  assertEqual "findGem base case"
+    [("",0,0,0)] (findGem "")
+  assertEqual "test findGem 'lets go on a ballon ride'"
+    (findGem "lets go on a balloon ride")
+    [("lets",56,11,215),("go",22,13,57),("on",29,11,90),("a",1,1,1),("balloon",71,26,183),("ride",36,27,98)]
+
+test_findPythag :: Test
+test_findPythag = TestCase $ do
+  assertEqual "findPythag base case"
+    [("",0,0,0)]  (findPythag "")
+  assertEqual "test 'lets go on a balloon ride"
+    [("lets",11,20,20),("go",13,13,13),("on",11,11,11),("a",1,1,1),("ballon",20,20,20),("ride",27,27,27)]
+    (findPythag "lets go on a ballon ride")
+  assertEqual "test Im the king of all I servey"
+    [("Im",13,13,13),("the",15,15,15),("king",23,23,32),("of",12,12,12),("all",7,7,7),("I",9,9,9),("survey",29,38,56)]
+    (findPythag "Im the king of all I survey")
+
+
+test_getWords :: Test
+test_getWords = TestCase $ do
+  assertEqual "getWords base case"
+    [""] (getWords "")
+  assertEqual "lets go on a ballon ride"
+    ["lets","go","on","a","balloon","ride"]
+    (getWords "lets go on a balloon ride")
 
 
 main :: IO Counts
 main = runTestTT $ TestList
-  [test_calcGem, test_calcXX, test_sumXX, test_calcGematria, test_calcPythag]
+  [test_calcGem, test_calcXX, test_sumXX, test_calcGematria,
+   test_calcPythag, test_getWords, test_findGem, test_findPythag]
