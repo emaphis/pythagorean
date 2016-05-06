@@ -69,6 +69,15 @@ printPyTotSW str = do
   printPXsw str
 
 
+-- print ALL totalss and show work
+printTotSW :: String -> IO ()
+printTotSW str = do
+  printSEsw str
+  printPYsw str
+  printPSsw str
+  printPXsw str
+  printHEsw str
+
 
 -- Utility functions
 
