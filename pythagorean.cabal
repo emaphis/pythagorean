@@ -18,11 +18,13 @@ library
   exposed-modules:     Lib
                      , Tables
                      , Calcs
+                     , DateCalcs
   build-depends:       HUnit >= 1.3.1.1
                      , QuickCheck >= 2.8.1
                      , base >= 4.7 && < 5
                      , containers >= 0.5.6.2
                      , split >= 0.2.3
+                     , time >= 1.5.0.1
   ghc-options:         -Wall -fno-warn-type-defaults
   default-language:    Haskell2010
 
@@ -35,6 +37,7 @@ executable pythagorean-exe
                      , containers >= 0.5.6.2
                      , pythagorean
                      , split >= 0.2.3
+                     , time >= 1.5.0.1
   default-language:    Haskell2010
 
 test-suite pythagorean-test
@@ -48,6 +51,7 @@ test-suite pythagorean-test
                      , hspec >= 2.2.3
                      , pythagorean
                      , split >= 0.2.3
+                     , time >= 1.5.0.1
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N  -fno-warn-type-defaults
   default-language:    Haskell2010
 

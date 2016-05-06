@@ -4,6 +4,7 @@
 module Reports where
 
 import Calcs
+-- import DateCalcs
 
 
 -- Some nicely formated reports
@@ -69,7 +70,7 @@ printPyTotSW str = do
   printPXsw str
 
 
--- print ALL totalss and show work
+-- print ALL totals and show work
 printTotSW :: String -> IO ()
 printTotSW str = do
   printSEsw str
@@ -78,6 +79,27 @@ printTotSW str = do
   printPXsw str
   printHEsw str
 
+
+-- Date reports
+
+printSplitDates :: Integer -> Int -> Int -> IO ()
+printSplitDates year mnth day = do
+  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
+    showWList ones ++ " = " ++ show (sum ones))
+  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
+    showWList [mnth,day,hnds,tens] ++ " = " ++ show (sum [mnth,day,hnds,tens]))
+  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show tens ++ "   - " ++
+    showWList [mnth,day,tens] ++ "   = " ++ show (sum [mnth,day,tens]))
+  where yr = fromIntegral year
+        ones = [spT mnth, spO mnth, spT day, spO day, spT hnds, spO hnds, spT tens, spO tens]
+        hnds = yr `div` 100
+        tens = yr `rem` 100
+        spT n = n `div` 10
+        spO n = n `rem` 10
+
+
+currentYear :: Integral a => a -> a
+currentYear year = year
 
 -- Utility functions
 
