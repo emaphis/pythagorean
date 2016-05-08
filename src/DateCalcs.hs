@@ -23,8 +23,9 @@ main = do
 -- | Calculate the days from beginning of year to now
 --   and days until end of year
 
-calcSpread  :: Integer -> Int -> Int -> (Integer,Integer)
-calcSpread yr mnth day = ((diffDays now1 jan01) + 1, diffDays dec31 now1)
+calcSpread  :: (Integer,Int,Int) -> (Integer,Integer)
+calcSpread (yr, mnth, day) =
+  ((diffDays now1 jan01) + 1, diffDays dec31 now1)
   where now1  = fromGregorian yr mnth day
         jan01 = fromGregorian yr 1 1
         dec31 = fromGregorian yr 12 31
@@ -32,6 +33,13 @@ calcSpread yr mnth day = ((diffDays now1 jan01) + 1, diffDays dec31 now1)
 -- | Calculate the number of seconds given Hrs, Mns, Scs
 calcSeconds ::  DiffTime -> DiffTime -> DiffTime -> DiffTime
 calcSeconds hrs mns scs =   ((hrs*60*60) + (mns*60) + scs)
+
+
+-- | Calculate the difference between two dates:
+calcDiffDays :: (Integer, Int, Int) -> (Integer, Int, Int) -> Integer
+calcDiffDays (y1,m1,d1) (y2,m2,d2) = diffDays day1 day2
+  where day1 = fromGregorian y1 m1 d1
+        day2 = fromGregorian y2 m2 d2
 
 
 -- test for prime numbers

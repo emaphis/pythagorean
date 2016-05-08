@@ -4,7 +4,7 @@
 module Reports where
 
 import Calcs
--- import DateCalcs
+import DateCalcs
 
 
 -- Some nicely formated reports
@@ -98,8 +98,15 @@ printSplitDates year mnth day = do
         spO n = n `rem` 10
 
 
-currentYear :: Integral a => a -> a
-currentYear year = year
+printDateSpread :: (Integer,Int,Int) -> IO ()
+printDateSpread (yr,mn,dy) = putStrLn (show d1 ++ " days since start of year " ++ show d2 ++ " days til end of year")
+    where (d1,d2) = calcSpread (yr,mn,dy)
+
+
+printDateDiff :: (Integer, Int, Int) -> (Integer, Int, Int) -> IO ()
+printDateDiff (y1,m1,d1) (y2,m2,d2) =
+  putStrLn (show dys ++ " days")
+    where dys = calcDiffDays (y1,m1,d1) (y2,m2,d2)
 
 -- Utility functions
 
