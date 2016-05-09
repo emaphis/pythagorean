@@ -119,7 +119,9 @@ printEach3 (wrd, x, y, z) =
   putStrLn (wrd ++ " -- " ++ show x ++ "/" ++  show y ++ "/" ++ show z)
 
 -- show the work list
-showWList :: Show a => [a] -> String
+showWList :: (Eq a, Num a, Show a) => [a] -> String
 showWList [x]     = show x
-showWList (x:xs)  = show x ++ "+" ++ showWList xs
+showWList (x:xs)
+  | x == 0        = showWList xs
+  | otherwise     =  show x ++ "+" ++ showWList xs
 showWList []      = ""
