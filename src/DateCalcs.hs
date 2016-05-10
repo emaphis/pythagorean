@@ -50,3 +50,36 @@ parseDate s = readTime defaultTimeLocale "%/m%/%Y" s
 -- test for prime numbers
 isPrime :: Integral a => a -> Bool
 isPrime x = null (filter (\y ->  x `mod`y == 0) (takeWhile (\y ->  y*y <= x) [2..]))
+
+-- produce an indexed list of primes upto a given number
+primeList :: Int -> [(Int,Int)]
+primeList num = loop num 1 1
+  where loop end idx pri
+          | pri == end  = []
+          | isPrime pri = (idx,pri) : loop end (idx+1) (pri+1)
+          | otherwise   = loop end idx (pri+1)
+
+
+-- produce the Nth prime number
+primeNth :: Int -> (Int,Int)
+primeNth num = loop num 1 1
+  where loop end idx pri
+          | idx >= end+1  = (idx-1,pri-1)
+          | isPrime pri   = loop end (idx+1) (pri+1)
+          | otherwise     = loop end idx (pri+1)
+
+
+
+primesOf11 :: [(Int,Int)]
+primesOf11 = 
+  [(11, 29),
+   (22, 73),
+   (33, 131),
+   (44, 191),
+   (55, 251),
+   (66, 313),
+   (77, 383),
+   (88, 449),
+   (99, 521),
+   (110, 599),
+   (121, 659)]
