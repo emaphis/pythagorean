@@ -5,6 +5,7 @@ module Reports where
 
 import Calcs
 import DateCalcs
+import NumCalcs ()
 
 
 -- Some nicely formated reports
@@ -107,6 +108,7 @@ printDateDiff :: (Integer, Int, Int) -> (Integer, Int, Int) -> IO ()
 printDateDiff (y1,m1,d1) (y2,m2,d2) =
   putStrLn (show dys ++ " days")
     where dys = calcDiffDays (y1,m1,d1) (y2,m2,d2)
+
 
 -- Utility functions
 

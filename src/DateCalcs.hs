@@ -46,28 +46,3 @@ parseDate  :: String -> Day
 parseDate s = readTime defaultTimeLocale "%/m%/%Y" s
 
 -- parseTimeOrError True
-
--- test for prime numbers
-isPrime :: Integral a => a -> Bool
-isPrime x =  not (any (\y ->  x `mod`y == 0) (takeWhile (\y ->  y*y <= x) [2..]))
-
--- produce a lazy list of primes
-primes :: [Int]
-primes = 2 : filter isPrime [3, 5..]
-
-
--- produce an indexed list of primes upto a given number
-primeList  :: Int -> [(Int,Int)]
-primeList n = take n (zip [1..] primes)
-
-
--- produce the Nth prime number
-primeNth  :: Int -> Int
-primeNth n = primes !! (n-1)
-
-
-
--- factors of an integer
-
-factors  :: Int -> [Int]
-factors n = filter (\d -> (n `rem` d) == 0) [1..n]
