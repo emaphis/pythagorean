@@ -82,8 +82,8 @@ printTotSW str = do
 
 -- Date reports
 
-printSplitDates :: Integer -> Int -> Int -> IO ()
-printSplitDates year mnth day = do
+printSplitDates :: (Integer, Int, Int) -> IO ()
+printSplitDates (year, mnth, day) = do
   putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
     showWList ones ++ " = " ++ show (sum ones))
   putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
