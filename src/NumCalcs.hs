@@ -3,8 +3,8 @@
 module NumCalcs where
 
 import Tables.PrimeTable (primeNumTbl)
-
 import Data.List
+import Data.Maybe (fromMaybe)
 
 
 -- test for prime numbers
@@ -30,12 +30,15 @@ primeNth n = primes !! (n-1)
 -- prime number lookup - faster than calculation
 
 -- prime number table lookup
-lookupPrime  :: Int -> Maybe Int
-lookupPrime n = lookup n primeNumTbl
+lookupPrime  :: Int -> Int
+lookupPrime n = fromMaybe 0 (lookup n primeNumTbl)
+
 
 -- lookup number of prime given that prime number
-lookupNumOfPrime :: Int -> Maybe Int
-lookupNumOfPrime n = findIndex (\p -> snd p == n) primeNumTbl
+-- findIndex retruns the (index - 1)
+lookupNumOfPrime :: Int -> Int
+lookupNumOfPrime n = idx + 1
+  where idx = fromMaybe (-1) (findIndex (\p -> snd p == n) primeNumTbl)
 
 
 -- factors of an integer
