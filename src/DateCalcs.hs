@@ -65,16 +65,9 @@ primeList n = take n (zip [1..] primes)
 primeNth  :: Int -> Int
 primeNth n = primes !! (n-1)
 
-primesOf11 :: [(Int,Int)]
-primesOf11 =
-  [(11, 29),
-   (22, 73),
-   (33, 131),
-   (44, 191),
-   (55, 251),
-   (66, 313),
-   (77, 383),
-   (88, 449),
-   (99, 521),
-   (110, 599),
-   (121, 659)]
+
+
+-- factors of an integer
+
+factors  :: Int -> [Int]
+factors n = filter (\d -> (n `rem` d) == 0) [1..n]
