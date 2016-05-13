@@ -45,3 +45,11 @@ lookupNumOfPrime n = idx + 1
 
 factors  :: Int -> [Int]
 factors n = filter (\d -> (n `rem` d) == 0) [1..n]
+
+
+-- prime factors
+primeFactors :: Int -> [Int] -> [Int]
+primeFactors n (x:xs)
+   | x > n          = []
+   | n `mod` x == 0 = x : primeFactors (n `div` x) (x:xs)
+   | otherwise      = primeFactors n xs
