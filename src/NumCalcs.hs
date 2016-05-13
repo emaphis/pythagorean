@@ -48,8 +48,13 @@ factors n = filter (\d -> (n `rem` d) == 0) [1..n]
 
 
 -- prime factors
-primeFactors :: Int -> [Int] -> [Int]
-primeFactors n (x:xs)
+primeFactors' :: Int -> [Int] -> [Int]
+primeFactors' _ []  = []
+primeFactors' n (x:xs)
    | x > n          = []
-   | n `mod` x == 0 = x : primeFactors (n `div` x) (x:xs)
-   | otherwise      = primeFactors n xs
+   | n `mod` x == 0 = x : primeFactors' (n `div` x) (x:xs)
+   | otherwise      = primeFactors' n xs
+
+
+primeFactors  :: Int -> [Int]
+primeFactors n = primeFactors' n primes
