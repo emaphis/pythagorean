@@ -324,3 +324,8 @@ getNum gMap c = fromMaybe 0 (M.lookup c gMap)
 -- convert char to upper before calculation
 getNumLower :: GemMap -> Char -> Int
 getNumLower gMap c = getNum gMap (toUpper c)
+
+
+-- look up letter given a number
+getLetter  :: Int -> GemMap -> Int
+getLetter n gemap = M.findIndex (\p -> snd p == n) gemap
