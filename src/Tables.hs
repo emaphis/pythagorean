@@ -4,7 +4,7 @@ module Tables where
 
 import qualified Data.Map as M
 import Data.Maybe (fromMaybe)
-import Data.Char (toUpper)
+import Data.Char (toUpper,toLower)
 
 -- A table relating Char to Int
 -- usefull for cipher calculations
@@ -326,6 +326,10 @@ getNumLower :: GemMap -> Char -> Int
 getNumLower gMap c = getNum gMap (toUpper c)
 
 
--- look up letter given a number
-getLetter  :: Int -> GemMap -> Int
-getLetter n gemap = M.findIndex (\p -> snd p == n) gemap
+-- look up letter given a number and a GemMap
+getLetter ::  Int -> GemMap -> Char
+getLetter n = head . M.keys . M.filter (==n)
+
+
+getLetterSE :: Int -> Char
+getLetterSE n = getLetter n seMap
