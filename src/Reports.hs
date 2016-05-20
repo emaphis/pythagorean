@@ -83,21 +83,24 @@ printTotSW str = do
 
 -- Date reports
 
-printDateSplit :: (Integer, Int, Int) -> IO ()
-printDateSplit (year, mnth, day) = do
-  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
-    showWList ones ++ " = " ++ show (sum ones))
-  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
-    showWList [mnth,day,hnds,tens] ++ " = " ++ show (sum [mnth,day,hnds,tens]))
-  putStrLn (show mnth ++ "/" ++ show day ++ "/" ++ show tens ++ "   - " ++
-    showWList [mnth,day,tens] ++ "   = " ++ show (sum [mnth,day,tens]))
-  where yr = fromIntegral year
-        ones = [spT mnth, spO mnth, spT day, spO day, spT hnds, spO hnds, spT tens, spO tens]
-        hnds = yr `div` 100
-        tens = yr `rem` 100
-        spT n = n `div` 10
-        spO n = n `rem` 10
-
+printDateSplit :: String -> IO ()
+printDateSplit day1 = do
+  case dt of
+    Nothing                -> putStrLn  "Error in date format: Should be MM/DD/YYYY"
+    Just (year,month,day)  -> do
+      putStrLn (show month ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
+        showWList ones ++ " = " ++ show (sum ones))
+      putStrLn (show month ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
+        showWList [month,day,hnds,tens] ++ " = " ++ show (sum [month,day,hnds,tens]))
+      putStrLn (show month ++ "/" ++ show day ++ "/" ++ show tens ++ "   - " ++
+        showWList [month,day,tens] ++ "   = " ++ show (sum [month,day,tens]))
+      where yr = fromIntegral year
+            ones = [spT month, spO month, spT day, spO day, spT hnds, spO hnds, spT tens, spO tens]
+            hnds = yr `div` 100
+            tens = yr `rem` 100
+            spT n = n `div` 10
+            spO n = n `rem` 10
+    where  dt = conv (readDate day1)
 
 printDateSpread :: String -> IO ()
 printDateSpread day =
