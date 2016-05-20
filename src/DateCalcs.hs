@@ -41,8 +41,8 @@ calcDiffDays (y1,m1,d1) (y2,m2,d2) = diffDays day1 day2
   where day1 = fromGregorian y1 m1 d1
         day2 = fromGregorian y2 m2 d2
 
--- | Parse DD/MM/YYY into a Day
-parseDate  :: String -> Day
-parseDate s = readTime defaultTimeLocale "%/m%/%Y" s
 
--- parseTimeOrError True
+-- | Parse DD/MM/YYYY into a Maybe Day
+readDate    :: String -> Maybe Day
+readDate str = parseTimeM True defaultTimeLocale "%m/%d/%Y" str
+

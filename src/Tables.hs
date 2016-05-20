@@ -4,7 +4,7 @@ module Tables where
 
 import qualified Data.Map as M
 import Data.Maybe (fromMaybe)
-import Data.Char (toUpper,toLower)
+import Data.Char (toUpper)
 
 -- A table relating Char to Int
 -- usefull for cipher calculations
