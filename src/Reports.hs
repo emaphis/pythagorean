@@ -99,15 +99,21 @@ printDateSplit (year, mnth, day) = do
         spO n = n `rem` 10
 
 
-printDateSpread :: (Integer,Int,Int) -> IO ()
-printDateSpread (yr,mn,dy) = putStrLn (show d1 ++ " days since start of year " ++ show d2 ++ " days til end of year")
-    where (d1,d2) = calcSpread (yr,mn,dy)
+printDateSpread :: String -> IO ()
+printDateSpread day =
+  case dt of
+    Nothing       -> putStrLn  "Error in date format: Should be MM/DD/YYYY"
+    Just (d1, d2) ->
+      putStrLn (show d1 ++ " days since start of year " ++ show d2 ++ " days til end of year")
+    where dt = calcSpread day
 
 
-printDateDiff :: (Integer, Int, Int) -> (Integer, Int, Int) -> IO ()
-printDateDiff (y1,m1,d1) (y2,m2,d2) =
-  putStrLn (show dys ++ " days")
-    where dys = calcDiffDays (y1,m1,d1) (y2,m2,d2)
+printDateDiff :: String -> String -> IO ()
+printDateDiff day1 day2 =
+  case dt of
+    Nothing      -> putStrLn  "Error in date format: Should be MM/DD/YYYY"
+    Just dys     -> putStrLn (show dys ++ " days")
+   where dt = calcDiffDays day1 day2
 
 
 -- Utility functions
