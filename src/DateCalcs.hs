@@ -57,5 +57,5 @@ calcDiffDays d1 d2 =
 
 -- | Parse DD/MM/YYYY into a Maybe Day
 readDate    :: String -> Maybe Day
-readDate str = parseTimeM True defaultTimeLocale "%m/%d/%Y" str
+readDate str = parseTimeM True defaultTimeLocale "%-m/%-d/%-Y" str
 
