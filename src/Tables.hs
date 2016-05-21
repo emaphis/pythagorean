@@ -4,7 +4,7 @@ module Tables where
 
 import qualified Data.Map as M
 import Data.Maybe (fromMaybe)
-import Data.Char (toUpper)
+import Data.Char (toUpper, digitToInt)
 
 -- A table relating Char to Int
 -- usefull for cipher calculations
@@ -283,7 +283,9 @@ bcMap = M.fromList
 -- get an Int from a GenMap given a Char
 -- strip the Maybe default to 0
 getNum :: GemMap -> Char -> Int
-getNum gMap c = fromMaybe 0 (M.lookup c gMap)
+getNum gMap c
+  | '0' <= c && c <= '9'  = digitToInt c
+  | otherwise             = fromMaybe 0 (M.lookup c gMap)
 
 -- convert char to upper before calculation
 getNumLower :: GemMap -> Char -> Int
