@@ -13,12 +13,7 @@ type GemMap = M.Map Char Int
 -- Simple English
 seMap :: GemMap
 seMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -48,12 +43,7 @@ seMap = M.fromList
 -- English
 enMap :: GemMap
 enMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('A', 6),
+  [('A', 6),
    ('B', 12),
    ('C', 18),
    ('D', 24),
@@ -83,12 +73,7 @@ enMap = M.fromList
 -- Simple Pythagorean
 pyMap :: GemMap
 pyMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -118,12 +103,7 @@ pyMap = M.fromList
 -- Pythagorean 'S' Exception
 psMap :: GemMap
 psMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -153,12 +133,7 @@ psMap = M.fromList
 -- Pythagorean All Exceptions
 pxMap :: GemMap
 pxMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -188,10 +163,7 @@ pxMap = M.fromList
 -- Hebrew
 heMap :: GemMap
 heMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -221,10 +193,7 @@ heMap = M.fromList
 -- Clasic English - "The English Gematria System",
 ceMap :: GemMap
 ceMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('A', 1),
+  [('A', 1),
    ('B', 2),
    ('C', 3),
    ('D', 4),
@@ -257,12 +226,7 @@ ceMap = M.fromList
 -- A-Z = 27-52
 bcMap :: GemMap
 bcMap = M.fromList
-  [(' ', 0),
-   ('-', 0),
-   ('.', 0),
-   ('!', 0),
-   ('?', 0),
-   ('a', 1),
+  [('a', 1),
    ('b', 2),
    ('c', 3),
    ('d', 4),
