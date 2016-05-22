@@ -37,22 +37,31 @@ printPy :: String -> IO ()
 printPy txt = printEach3 (txt, sumPY txt, sumPS txt, sumPX txt)
 
 
+-- print totals
+printTot :: String -> IO ()
+printTot txt = do
+  putStrLn (txt ++ " -- " ++ show (sumSE txt) ++ " SE - " ++  show (sumPY txt) ++ " PY - " ++
+            show (sumPS txt) ++ " PS - " ++ show (sumPX txt) ++ " PX - " ++
+            show (sumHE txt) ++ " HE - " ++ show (sumBC txt) ++ " BC ")
+
+
 -- report funtions that also show work
 
 -- print and show work given a calc funtion and a String
-printSW :: (String -> [Int]) -> String -> IO()
+printSW :: (String -> [Int]) -> String -> IO ()
 printSW fn str = putStrLn  (str ++ " - " ++ showWList lst ++ " = " ++ show (sum lst))
   where lst = fn str
 
 
 -- print and show work of various gematria
-printSEsw,printPYsw,printPSsw,printPXsw,printHEsw
+printSEsw,printPYsw,printPSsw,printPXsw,printHEsw,printBCsw
   :: String -> IO ()
 printSEsw = printSW calcSE
 printPYsw = printSW calcPY
 printPSsw = printSW calcPS
 printPXsw = printSW calcPX
 printHEsw = printSW calcHE
+printBCsw = printSW calcBC
 
 
 -- print gematria totals and show work
@@ -79,6 +88,7 @@ printTotSW str = do
   printPSsw str
   printPXsw str
   printHEsw str
+  printBCsw str
 
 
 -- Date reports
