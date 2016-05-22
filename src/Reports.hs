@@ -40,7 +40,9 @@ printPy txt = printEach3 (txt, sumPY txt, sumPS txt, sumPX txt)
 -- print totals
 printTot :: String -> IO ()
 printTot txt = do
-  putStrLn (txt ++ " -- " ++ show (sumSE txt) ++ " SE - " ++  show (sumPY txt) ++ " PY - " ++
+  putStrLn (txt ++ " -- " ++
+            show (sumSE txt) ++ " SE - " ++ show (sumEN txt) ++ " EN - " ++
+            show (sumCE txt) ++ " CE - " ++ show (sumPY txt) ++ " PY - " ++
             show (sumPS txt) ++ " PS - " ++ show (sumPX txt) ++ " PX - " ++
             show (sumHE txt) ++ " HE - " ++ show (sumBC txt) ++ " BC ")
 

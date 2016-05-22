@@ -18,15 +18,18 @@ calcGem gMap str = map (getNum gMap . toUpper) str
 -- [2,1,3,3,6,6,5]
 
 
--- calculate Simple English, Pythagorean, Jewish, Pythagorean S,
--- Pythagorean Exceptions, Bacon
-calcSE,calcPY,calcHE,calcPS,calcPX,calcBC
+-- calculate Simple English, English, Classic English,
+-- Pythagorean,  Pythagorean S, Pythagorean Exceptions,
+-- Jewish, Bacon
+calcSE,calcEN,calcCE,calcPY,calcHE,calcPS,calcPX,calcBC
   :: String -> [Int]
 calcSE = calcGem seMap
+calcEN = calcGem enMap
+calcCE = calcGem ceMap
 calcPY = calcGem pyMap
-calcHE = calcGem heMap
 calcPS = calcGem psMap
 calcPX = calcGem pxMap
+calcHE = calcGem heMap
 calcBC str =  map (getNum bcMap) str
 
 -- > calcSE "balloon"
@@ -37,15 +40,19 @@ calcBC str =  map (getNum bcMap) str
 --   [2,1,20,20,50,50,40]
 
 
--- calculate the sum of Simple English, Simple Pythagorean, S Pythagorean,
--- Pathagorean with Exceptions, Jewish, Bacon
+-- calculate the sum of Simple English, English,
+-- Classic English, Pythagorean,  Pythagorean S,
+-- Pythagorean Exceptions, Jewish, Bacon
 -- convenience function
-sumSE,sumPY,sumHE,sumPS,sumPX,sumBC :: String -> Int
+sumSE,sumEN,sumCE,sumPY,sumPS,sumPX,sumHE,sumBC
+  :: String -> Int
 sumSE = sum . calcSE
+sumEN = sum . calcEN
+sumCE = sum . calcCE
 sumPY = sum . calcPY
-sumHE = sum . calcHE
 sumPS = sum . calcPS
 sumPX = sum . calcPX
+sumHE = sum . calcHE
 sumBC = sum . calcBC
 
 -- sumSE "balloon"

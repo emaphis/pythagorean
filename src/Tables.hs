@@ -40,7 +40,7 @@ seMap = M.fromList
    ('Y', 25),
    ('Z', 26)]
 
--- English
+-- English  (SE * 6)
 enMap :: GemMap
 enMap = M.fromList
   [('A', 6),
