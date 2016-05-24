@@ -9,10 +9,10 @@ import Data.Time
 -- formating experiments
 format1 :: FormatTime t => t -> String
 format1 = formatTime defaultTimeLocale "%Y-%m-%e"
- 
+
 format2 :: FormatTime t => t -> String
 format2 = formatTime defaultTimeLocale "%A, %B %d, %Y"
- 
+
 main :: IO ()
 main = do
     t <- liftM2 utcToLocalTime getCurrentTimeZone getCurrentTime
@@ -27,7 +27,7 @@ calcSpread :: String -> Maybe (Integer, Integer)
 calcSpread day =
   case dt of
     Nothing              -> Nothing
-    Just (yr, mnth, dy) -> Just (((diffDays now1 jan01) + 1, diffDays dec31 now1))
+    Just (yr, mnth, dy) -> Just (diffDays now1 jan01 + 1, diffDays dec31 now1)
       where now1  = fromGregorian yr mnth dy
             jan01 = fromGregorian yr 1 1
             dec31 = fromGregorian yr 12 31
@@ -43,7 +43,7 @@ conv dy =  case dy of
 
 -- | Calculate the number of seconds given Hrs, Mns, Scs
 calcSeconds ::  DiffTime -> DiffTime -> DiffTime -> DiffTime
-calcSeconds hrs mns scs =   ((hrs*60*60) + (mns*60) + scs)
+calcSeconds hrs mns scs =   (hrs*60*60) + (mns*60) + scs
 
 
 -- | Calculate the difference between two dates:
@@ -55,7 +55,14 @@ calcDiffDays d1 d2 =
     (Just day1, Just day2) -> Just (diffDays day1 day2)
 
 
--- | Parse DD/MM/YYYY into a Maybe Day
-readDate    :: String -> Maybe Day
-readDate str = parseTimeM True defaultTimeLocale "%-m/%-d/%-Y" str
+-- | Add or subract days to a date
+addDaysToDate :: String -> Integer -> Maybe Day
+addDaysToDate day days =
+  case readDate day of
+    Nothing  -> Nothing
+    Just dt  -> Just (addDays days dt)
 
+
+-- | Parse DD/MM/YYYY into a Maybe Day
+readDate :: String -> Maybe Day
+readDate  = parseTimeM True defaultTimeLocale "%-m/%-d/%-Y"
