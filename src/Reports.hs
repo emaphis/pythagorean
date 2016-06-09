@@ -100,12 +100,20 @@ printDateSplit day1 = do
   case dt of
     Nothing                -> putStrLn  "Error in date format: Should be MM/DD/YYYY"
     Just (year,month,day)  -> do
+
       putStrLn (show month ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
         showWList ones ++ " = " ++ show (sum ones))
+
       putStrLn (show month ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
         showWList [month,day,hnds,tens] ++ " = " ++ show (sum [month,day,hnds,tens]))
+
+      putStrLn (show month ++ "/" ++ show day ++ "/" ++ show yr ++ " - " ++
+         showWList [month,day,spT hnds, spO hnds, spT tens, spO tens] ++ "  = " ++
+         show (sum [month,day,spT hnds, spO hnds, spT tens, spO tens]))
+
       putStrLn (show month ++ "/" ++ show day ++ "/" ++ show tens ++ "   - " ++
         showWList [month,day,tens] ++ "   = " ++ show (sum [month,day,tens]))
+
       where yr = fromIntegral year
             ones = [spT month, spO month, spT day, spO day, spT hnds, spO hnds, spT tens, spO tens]
             hnds = yr `div` 100
